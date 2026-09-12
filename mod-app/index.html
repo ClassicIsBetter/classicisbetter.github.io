@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Moderator Application - Classics Silly Chatting Place</title>
+
+    <style>
+        body {
+            background: #111;
+            color: white;
+            font-family: Arial, sans-serif;
+            padding: 40px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 30px;
+            margin-bottom: 5px;
+        }
+
+        p.subtitle {
+            font-size: 16px;
+            color: #aaa;
+            margin-bottom: 30px;
+        }
+
+        label {
+            display: block;
+            font-size: 18px;
+            margin-top: 25px;
+            margin-bottom: 8px;
+        }
+
+        input[type="text"],
+        textarea {
+            width: 100%;
+            box-sizing: border-box;
+            background: #1c1c1c;
+            border: 1px solid #333;
+            color: white;
+            padding: 12px;
+            font-size: 16px;
+            border-radius: 6px;
+            font-family: Arial, sans-serif;
+            resize: vertical;
+        }
+
+        textarea {
+            min-height: 90px;
+        }
+
+        input[type="text"]:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #7289da;
+        }
+
+        button {
+            margin-top: 30px;
+            background: #7289da;
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            font-size: 18px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        button:hover {
+            background: #5b6eae;
+        }
+
+        button:disabled {
+            background: #444;
+            cursor: not-allowed;
+        }
+
+        #status {
+            margin-top: 20px;
+            font-size: 16px;
+        }
+
+        .error {
+            color: #ff6b6b;
+        }
+
+        .success {
+            color: #6bff8f;
+        }
+
+        a.back {
+            display: inline-block;
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        a.back:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <a class="back" href="/">&lt; Back to site</a>
+
+    <h1>Moderator Application</h1>
+    <p class="subtitle">Classics Silly Chatting Place</p>
+
+    <form id="modForm">
+        <label for="username">Your Discord username</label>
+        <input type="text" id="username" required>
+
+        <label for="q1">1. Will you abuse your powers?</label>
+        <textarea id="q1" required></textarea>
+
+        <label for="q2">2. Will you help the server?</label>
+        <textarea id="q2" required></textarea>
+
+        <label for="q3">3. Someone gets mad at someone else and it escalates to personal stuff. What do you do?</label>
+        <textarea id="q3" required></textarea>
+
+        <label for="q4">4. Someone is breaking a rule and asks you to forgive them, what do you do?</label>
+        <textarea id="q4" required></textarea>
+
+        <label for="q5">5. Someone betrays you. What do you do?</label>
+        <textarea id="q5" required></textarea>
+
+        <label for="q6">6. Someone gets mad. What do you do?</label>
+        <textarea id="q6" required></textarea>
+
+        <button type="submit" id="submitBtn">Submit Application</button>
+        <div id="status"></div>
+    </form>
+
+    <script>
+        const WEBHOOK_URL = "https://discord.com/api/webhooks/1548226215637418035/V2z69Y3C307HpinsS5Arq5FI2-98ijT8vBt-qYdNzN3nw4plIEvaBjK9MMyGHbfe_53T";
+
+        const questions = [
+            "Will you abuse your powers?",
+            "Will you help the server?",
+            "Someone gets mad at someone else and it escalates to personal stuff. What do you do?",
+            "Someone is breaking a rule and asks you to forgive them, what do you do?",
+            "Someone betrays you. What do you do?",
+            "Someone gets mad. What do you do?"
+        ];
+
+        const form = document.getElementById("modForm");
+        const status = document.getElementById("status");
+        const submitBtn = document.getElementById("submitBtn");
+
+        form.addEventListener("submit", async function (e) {
+            e.preventDefault();
+
+            const username = document.getElementById("username").value.trim();
+            const answers = [
+                document.getElementById("q1").value.trim(),
+                document.getElementById("q2").value.trim(),
+                document.getElementById("q3").value.trim(),
+                document.getElementById("q4").value.trim(),
+                document.getElementById("q5").value.trim(),
+                document.getElementById("q6").value.trim()
+            ];
+
+            if (!username || answers.some(a => a === "")) {
+                status.textContent = "Please fill out every field before submitting.";
+                status.className = "error";
+                return;
+            }
+
+            submitBtn.disabled = true;
+            status.textContent = "Submitting...";
+            status.className = "";
+
+            const fields = questions.map((q, i) => ({
+                name: q,
+                value: answers[i].slice(0, 1024) || "N/A"
+            }));
+
+            const embed = {
+                title: "New Moderator Application",
+                color: 0x7289da,
+                fields: [
+                    { name: "Applicant", value: username },
+                    ...fields
+                ],
+                timestamp: new Date().toISOString()
+            };
+
+            try {
+                const res = await fetch(WEBHOOK_URL, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ embeds: [embed] })
+                });
+
+                if (res.ok) {
+                    status.textContent = "Application submitted! Thanks for applying.";
+                    status.className = "success";
+                    form.reset();
+                } else {
+                    status.textContent = "Something went wrong submitting your application. Please try again.";
+                    status.className = "error";
+                    submitBtn.disabled = false;
+                }
+            } catch (err) {
+                status.textContent = "Something went wrong submitting your application. Please try again.";
+                status.className = "error";
+                submitBtn.disabled = false;
+            }
+        });
+    </script>
+
+</body>
+</html>
