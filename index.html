@@ -1,66 +1,1115 @@
+```html
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>classics page</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Classic's Place</title>
 
-    <style>
-        body {
-            background: #111;
-            color: white;
-            font-family: Arial, sans-serif;
-            padding: 40px;
+<style>
+    * {
+        box-sizing: border-box;
+        user-select: none;
+    }
+
+    html, body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        overflow: hidden;
+        font-family: Tahoma, "MS Sans Serif", sans-serif;
+        font-size: 11px;
+    }
+
+    body {
+        background: #3a6ea5 url("/images/bliss") center center / cover no-repeat fixed;
+    }
+
+    /* =========================
+       DESKTOP
+       ========================= */
+
+    #desktop {
+        position: fixed;
+        inset: 0;
+        bottom: 30px;
+        padding: 12px;
+    }
+
+    .desktop-icon {
+        width: 80px;
+        min-height: 78px;
+        margin-bottom: 12px;
+        text-align: center;
+        color: white;
+        text-shadow:
+            1px 1px 2px #000,
+            -1px -1px 1px rgba(0,0,0,.4);
+        cursor: default;
+        padding: 4px;
+    }
+
+    .desktop-icon:hover {
+        background: rgba(49, 106, 180, .35);
+        border: 1px dotted white;
+        padding: 3px;
+    }
+
+    .desktop-icon:active {
+        background: rgba(49, 106, 180, .55);
+    }
+
+    .icon-image {
+        width: 40px;
+        height: 40px;
+        margin: 0 auto 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 31px;
+        filter: drop-shadow(1px 2px 2px rgba(0,0,0,.5));
+    }
+
+    .icon-label {
+        line-height: 14px;
+        word-wrap: break-word;
+    }
+
+    /* =========================
+       XP WINDOWS
+       ========================= */
+
+    .xp-window {
+        position: absolute;
+        width: 430px;
+        min-width: 280px;
+        min-height: 180px;
+        background: #ece9d8;
+        border: 1px solid #003399;
+        border-radius: 7px 7px 0 0;
+        box-shadow:
+            3px 3px 8px rgba(0,0,0,.45),
+            inset 1px 1px rgba(255,255,255,.8);
+        overflow: hidden;
+        display: none;
+    }
+
+    .xp-window.active {
+        display: block;
+    }
+
+    .title-bar {
+        height: 30px;
+        background:
+            linear-gradient(
+                to bottom,
+                #3f8df7 0%,
+                #0d5dcc 45%,
+                #0a4fbd 55%,
+                #0845a7 100%
+            );
+        color: white;
+        display: flex;
+        align-items: center;
+        padding-left: 7px;
+        font-weight: bold;
+        font-size: 12px;
+        cursor: move;
+        border-radius: 6px 6px 0 0;
+        text-shadow: 1px 1px #17427c;
+    }
+
+    .title-icon {
+        width: 20px;
+        height: 20px;
+        margin-right: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 17px;
+    }
+
+    .title-text {
+        flex: 1;
+    }
+
+    .window-buttons {
+        display: flex;
+        gap: 2px;
+        padding-right: 4px;
+    }
+
+    .window-button {
+        width: 21px;
+        height: 21px;
+        border: 1px solid white;
+        border-radius: 3px;
+        background: linear-gradient(#78b8ff, #1464c5);
+        color: white;
+        font-family: Arial, sans-serif;
+        font-weight: bold;
+        font-size: 12px;
+        line-height: 17px;
+        padding: 0;
+        text-align: center;
+        box-shadow:
+            inset 1px 1px rgba(255,255,255,.5),
+            1px 1px rgba(0,0,0,.25);
+        cursor: pointer;
+    }
+
+    .window-button:hover {
+        background: linear-gradient(#9acaff, #2878dc);
+    }
+
+    .window-button:active {
+        background: linear-gradient(#1555a9, #4c9af5);
+    }
+
+    .window-content {
+        background: #fff;
+        border: 1px solid #7f9db9;
+        margin: 3px;
+        min-height: 145px;
+        padding: 18px;
+        color: #000;
+        overflow: auto;
+    }
+
+    .window-content h1 {
+        font-size: 18px;
+        margin: 0 0 12px;
+        color: #174a8b;
+    }
+
+    .window-content h2 {
+        font-size: 14px;
+        margin: 15px 0 7px;
+        color: #174a8b;
+    }
+
+    .window-content p {
+        margin: 8px 0;
+        line-height: 17px;
+    }
+
+    .window-content a {
+        color: #0000ee;
+        text-decoration: underline;
+        cursor: pointer;
+    }
+
+    .window-content a:visited {
+        color: #551a8b;
+    }
+
+    .xp-link {
+        display: block;
+        width: fit-content;
+        padding: 4px 8px;
+        margin: 6px 0;
+    }
+
+    .xp-link:hover {
+        background: #316ac5;
+        color: white !important;
+        text-decoration: none !important;
+    }
+
+    /* =========================
+       START MENU
+       ========================= */
+
+    #start-menu {
+        position: fixed;
+        left: 0;
+        bottom: 30px;
+        width: 310px;
+        background: #fff;
+        border: 1px solid #003399;
+        border-radius: 5px 5px 0 0;
+        box-shadow: 3px 3px 8px rgba(0,0,0,.45);
+        display: none;
+        z-index: 10000;
+        overflow: hidden;
+    }
+
+    #start-menu.open {
+        display: block;
+    }
+
+    .start-header {
+        height: 58px;
+        background: linear-gradient(#2e83e8, #0b58bd);
+        color: white;
+        display: flex;
+        align-items: center;
+        padding: 8px;
+        font-size: 16px;
+        font-weight: bold;
+        text-shadow: 1px 1px #17427c;
+    }
+
+    .start-logo {
+        width: 42px;
+        height: 42px;
+        margin-right: 10px;
+        background: white;
+        color: #1472d4;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 27px;
+        border-radius: 3px;
+    }
+
+    .start-body {
+        display: flex;
+        min-height: 245px;
+    }
+
+    .start-left {
+        flex: 1;
+        padding: 7px;
+        background: white;
+    }
+
+    .start-right {
+        width: 105px;
+        background: #d3e5fa;
+        padding: 7px;
+    }
+
+    .start-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 7px 5px;
+        color: #000;
+        cursor: pointer;
+    }
+
+    .start-item:hover {
+        background: #316ac5;
+        color: white;
+    }
+
+    .start-item-icon {
+        width: 28px;
+        height: 28px;
+        font-size: 23px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .start-separator {
+        border-top: 1px solid #ddd;
+        margin: 5px;
+    }
+
+    .start-right .start-item {
+        padding: 6px 3px;
+        font-size: 10px;
+    }
+
+    /* =========================
+       TASKBAR
+       ========================= */
+
+    #taskbar {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 30px;
+        background:
+            linear-gradient(
+                to bottom,
+                #3c9af3,
+                #1674d2 45%,
+                #1266bd 55%,
+                #0d5cab
+            );
+        display: flex;
+        align-items: center;
+        z-index: 20000;
+        box-shadow: inset 0 1px rgba(255,255,255,.4);
+    }
+
+    #start-button {
+        height: 30px;
+        min-width: 92px;
+        border: none;
+        border-radius: 0 9px 9px 0;
+        background:
+            linear-gradient(
+                to bottom,
+                #65c54b,
+                #299526 45%,
+                #187d1a
+            );
+        color: white;
+        font-weight: bold;
+        font-style: italic;
+        font-size: 14px;
+        text-shadow: 1px 1px #27621d;
+        box-shadow:
+            inset 0 1px rgba(255,255,255,.5),
+            inset -1px 0 rgba(0,0,0,.3);
+        cursor: pointer;
+        padding: 0 12px;
+    }
+
+    #start-button:hover {
+        background:
+            linear-gradient(
+                to bottom,
+                #79d55c,
+                #3cae30 45%,
+                #238b22
+            );
+    }
+
+    #start-button:active {
+        background: linear-gradient(#187d1a, #55b847);
+    }
+
+    #taskbar-windows {
+        display: flex;
+        flex: 1;
+        height: 100%;
+        padding: 2px 4px;
+        gap: 3px;
+        overflow: hidden;
+    }
+
+    .task-button {
+        min-width: 120px;
+        max-width: 180px;
+        height: 25px;
+        background: linear-gradient(#4b9bea, #1668c0);
+        border: 1px solid #0b4e9c;
+        border-radius: 2px;
+        color: white;
+        text-align: left;
+        padding: 0 7px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        cursor: pointer;
+        box-shadow: inset 1px 1px rgba(255,255,255,.35);
+    }
+
+    .task-button:hover {
+        background: linear-gradient(#69adf4, #2877d0);
+    }
+
+    .task-button.active-task {
+        background: linear-gradient(#1456a4, #3181d6);
+        box-shadow:
+            inset 1px 1px rgba(0,0,0,.3),
+            inset -1px -1px rgba(255,255,255,.2);
+    }
+
+    #system-tray {
+        height: 100%;
+        min-width: 90px;
+        padding: 0 9px;
+        background: linear-gradient(#2380d7, #1265b5);
+        border-left: 1px solid #0b4c99;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        gap: 7px;
+    }
+
+    #tray-icons {
+        font-size: 12px;
+    }
+
+    #clock {
+        font-size: 11px;
+        white-space: nowrap;
+    }
+
+    /* =========================
+       XP BUTTON
+       ========================= */
+
+    .xp-button {
+        font-family: Tahoma, sans-serif;
+        font-size: 11px;
+        background: #ece9d8;
+        border: 1px solid #003c74;
+        border-radius: 3px;
+        padding: 4px 13px;
+        box-shadow:
+            inset 1px 1px white,
+            inset -1px -1px #808080;
+        cursor: pointer;
+    }
+
+    .xp-button:hover {
+        background: #f7f5ed;
+    }
+
+    .xp-button:active {
+        box-shadow:
+            inset 1px 1px #808080,
+            inset -1px -1px white;
+    }
+
+    /* =========================
+       RESPONSIVE
+       ========================= */
+
+    @media (max-width: 600px) {
+        .xp-window {
+            width: calc(100vw - 24px);
+            max-width: calc(100vw - 24px);
+            left: 12px !important;
         }
 
-        p {
-            font-size: 24px;
+        #start-menu {
+            width: 280px;
         }
 
-        img {
-            display: block;
-            max-width: 500px;
-            max-height: 400px;
-            margin: 20px 0;
-            border-radius: 8px;
+        #system-tray {
+            min-width: 65px;
         }
 
-        a {
-            display: block;
-            color: white;
-            text-decoration: none;
-            font-size: 20px;
-            margin: 15px 0;
-            transition: transform 0.2s;
+        #tray-icons {
+            display: none;
         }
 
-        a:hover {
-            transform: translateX(10px);
+        .task-button {
+            min-width: 90px;
         }
-    </style>
+    }
+</style>
 </head>
 
 <body>
 
-    <p>this is my site</p>
+<!-- =========================
+     DESKTOP
+     ========================= -->
 
-    <img id="randomImage">
+<div id="desktop">
 
-    <script>
-        const images = [
-            "images/1.png",
-            "images/2.png",
-            "images/3.png",
-            "images/4.jpg"
-        ];
+    <div class="desktop-icon" ondblclick="openWindow('welcome')">
+        <div class="icon-image">💻</div>
+        <div class="icon-label">My Computer</div>
+    </div>
 
-        const randomImage = images[Math.floor(Math.random() * images.length)];
+    <div class="desktop-icon" ondblclick="openWindow('internet')">
+        <div class="icon-image">🌐</div>
+        <div class="icon-label">Internet Explorer</div>
+    </div>
 
-        document.getElementById("randomImage").src = randomImage;
-    </script>
+    <div class="desktop-icon" ondblclick="openWindow('documents')">
+        <div class="icon-image">📁</div>
+        <div class="icon-label">My Documents</div>
+    </div>
 
-    <a href="https://discord.gg/4UczSaa4AJ">> Discord</a>
-    <a href="#">> Link 2</a>
-    <a href="#">> Link 3</a>
-    <a href="#">> Link 4</a>
+    <div class="desktop-icon" ondblclick="openWindow('links')">
+        <div class="icon-image">🔗</div>
+        <div class="icon-label">My Links</div>
+    </div>
+
+    <div class="desktop-icon" ondblclick="openWindow('about')">
+        <div class="icon-image">ℹ️</div>
+        <div class="icon-label">About</div>
+    </div>
+
+    <div class="desktop-icon" ondblclick="openWindow('recycle')">
+        <div class="icon-image">🗑️</div>
+        <div class="icon-label">Recycle Bin</div>
+    </div>
+
+</div>
+
+
+<!-- =========================
+     WINDOWS
+     ========================= -->
+
+<div id="welcome" class="xp-window" style="left: 150px; top: 70px;">
+    <div class="title-bar">
+        <div class="title-icon">💻</div>
+        <div class="title-text">My Computer</div>
+        <div class="window-buttons">
+            <button class="window-button" onclick="minimizeWindow('welcome')">_</button>
+            <button class="window-button" onclick="closeWindow('welcome')">×</button>
+        </div>
+    </div>
+
+    <div class="window-content">
+        <h1>Welcome!</h1>
+
+        <p>
+            Welcome to my little corner of the internet.
+        </p>
+
+        <p>
+            This website is running in <b>Windows XP mode</b>.
+        </p>
+
+        <h2>Computer information</h2>
+
+        <p>
+            Operating System: Windows XP<br>
+            Service Pack: 3<br>
+            User: Classic
+        </p>
+
+        <button class="xp-button" onclick="openWindow('about')">
+            System Information
+        </button>
+    </div>
+</div>
+
+
+<div id="internet" class="xp-window" style="left: 220px; top: 120px;">
+    <div class="title-bar">
+        <div class="title-icon">🌐</div>
+        <div class="title-text">Internet Explorer</div>
+        <div class="window-buttons">
+            <button class="window-button" onclick="minimizeWindow('internet')">_</button>
+            <button class="window-button" onclick="closeWindow('internet')">×</button>
+        </div>
+    </div>
+
+    <div class="window-content">
+
+        <h1>Internet Explorer</h1>
+
+        <p>
+            <b>Welcome to the Internet!</b>
+        </p>
+
+        <p>
+            Pick somewhere to go:
+        </p>
+
+        <a class="xp-link" href="/">🏠 Home</a>
+        <a class="xp-link" href="/projects">📁 Projects</a>
+        <a class="xp-link" href="/socials">🌐 Socials</a>
+        <a class="xp-link" href="/contact">✉️ Contact</a>
+
+        <p style="margin-top: 18px;">
+            <small>Internet Explorer 6.0</small>
+        </p>
+
+    </div>
+</div>
+
+
+<div id="documents" class="xp-window" style="left: 300px; top: 90px;">
+    <div class="title-bar">
+        <div class="title-icon">📁</div>
+        <div class="title-text">My Documents</div>
+        <div class="window-buttons">
+            <button class="window-button" onclick="minimizeWindow('documents')">_</button>
+            <button class="window-button" onclick="closeWindow('documents')">×</button>
+        </div>
+    </div>
+
+    <div class="window-content">
+
+        <h1>My Documents</h1>
+
+        <p>
+            Here are some things I've made:
+        </p>
+
+        <a class="xp-link" href="/projects">📄 Projects</a>
+        <a class="xp-link" href="/downloads">💾 Downloads</a>
+        <a class="xp-link" href="/games">🎮 Games</a>
+
+    </div>
+</div>
+
+
+<div id="links" class="xp-window" style="left: 390px; top: 150px;">
+    <div class="title-bar">
+        <div class="title-icon">🔗</div>
+        <div class="title-text">My Links</div>
+        <div class="window-buttons">
+            <button class="window-button" onclick="minimizeWindow('links')">_</button>
+            <button class="window-button" onclick="closeWindow('links')">×</button>
+        </div>
+    </div>
+
+    <div class="window-content">
+
+        <h1>My Links</h1>
+
+        <p>Some useful places around the site:</p>
+
+        <a class="xp-link" href="/socials">🌐 Socials</a>
+        <a class="xp-link" href="/projects">🛠️ Projects</a>
+        <a class="xp-link" href="/games">🎮 Games</a>
+        <a class="xp-link" href="/about">ℹ️ About Me</a>
+
+    </div>
+</div>
+
+
+<div id="about" class="xp-window" style="left: 180px; top: 180px;">
+    <div class="title-bar">
+        <div class="title-icon">ℹ️</div>
+        <div class="title-text">About</div>
+        <div class="window-buttons">
+            <button class="window-button" onclick="minimizeWindow('about')">_</button>
+            <button class="window-button" onclick="closeWindow('about')">×</button>
+        </div>
+    </div>
+
+    <div class="window-content">
+
+        <h1>About This Website</h1>
+
+        <p>
+            This website has been transformed into a Windows XP-style desktop.
+        </p>
+
+        <p>
+            Yes, the Bliss wallpaper is doing most of the heavy lifting.
+            😎
+        </p>
+
+        <p>
+            <a href="/">Return to homepage</a>
+        </p>
+
+    </div>
+</div>
+
+
+<div id="recycle" class="xp-window" style="left: 470px; top: 80px;">
+    <div class="title-bar">
+        <div class="title-icon">🗑️</div>
+        <div class="title-text">Recycle Bin</div>
+        <div class="window-buttons">
+            <button class="window-button" onclick="minimizeWindow('recycle')">_</button>
+            <button class="window-button" onclick="closeWindow('recycle')">×</button>
+        </div>
+    </div>
+
+    <div class="window-content">
+
+        <h1>Recycle Bin</h1>
+
+        <p>
+            The Recycle Bin is empty.
+        </p>
+
+        <p>
+            There is nothing here. Very efficient. 👍
+        </p>
+
+    </div>
+</div>
+
+
+<!-- =========================
+     START MENU
+     ========================= -->
+
+<div id="start-menu">
+
+    <div class="start-header">
+        <div class="start-logo">🪟</div>
+        Classic
+    </div>
+
+    <div class="start-body">
+
+        <div class="start-left">
+
+            <div class="start-item" onclick="openWindow('internet'); toggleStart()">
+                <div class="start-item-icon">🌐</div>
+                <div>
+                    <b>Internet Explorer</b><br>
+                    <small>Browse the Internet</small>
+                </div>
+            </div>
+
+            <div class="start-item" onclick="openWindow('documents'); toggleStart()">
+                <div class="start-item-icon">📁</div>
+                <div>
+                    <b>My Documents</b><br>
+                    <small>Personal files</small>
+                </div>
+            </div>
+
+            <div class="start-item" onclick="openWindow('links'); toggleStart()">
+                <div class="start-item-icon">🔗</div>
+                <div>
+                    <b>My Links</b><br>
+                    <small>Useful websites</small>
+                </div>
+            </div>
+
+            <div class="start-separator"></div>
+
+            <div class="start-item" onclick="openWindow('about'); toggleStart()">
+                <div class="start-item-icon">ℹ️</div>
+                <div>
+                    <b>About</b>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="start-right">
+
+            <div class="start-item" onclick="openWindow('welcome'); toggleStart()">
+                <div class="start-item-icon">💻</div>
+                <b>My Computer</b>
+            </div>
+
+            <div class="start-item" onclick="openWindow('recycle'); toggleStart()">
+                <div class="start-item-icon">🗑️</div>
+                <b>Recycle Bin</b>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     TASKBAR
+     ========================= -->
+
+<div id="taskbar">
+
+    <button id="start-button" onclick="toggleStart()">
+        🪟 start
+    </button>
+
+    <div id="taskbar-windows"></div>
+
+    <div id="system-tray">
+
+        <div id="tray-icons">
+            🔊 🌐
+        </div>
+
+        <div id="clock">
+            12:00 PM
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+    /* =========================
+       WINDOW SYSTEM
+       ========================= */
+
+    let highestZ = 100;
+    const openWindows = new Set();
+
+    const windowNames = {
+        welcome: "My Computer",
+        internet: "Internet Explorer",
+        documents: "My Documents",
+        links: "My Links",
+        about: "About",
+        recycle: "Recycle Bin"
+    };
+
+    function openWindow(id) {
+
+        const win = document.getElementById(id);
+
+        if (!win) return;
+
+        win.classList.add("active");
+
+        highestZ++;
+        win.style.zIndex = highestZ;
+
+        openWindows.add(id);
+
+        updateTaskbar();
+
+        win.addEventListener("mousedown", function() {
+            focusWindow(id);
+        });
+
+        focusWindow(id);
+    }
+
+
+    function closeWindow(id) {
+
+        const win = document.getElementById(id);
+
+        if (!win) return;
+
+        win.classList.remove("active");
+
+        openWindows.delete(id);
+
+        updateTaskbar();
+    }
+
+
+    function minimizeWindow(id) {
+
+        const win = document.getElementById(id);
+
+        if (!win) return;
+
+        win.classList.remove("active");
+
+        updateTaskbar();
+    }
+
+
+    function focusWindow(id) {
+
+        const win = document.getElementById(id);
+
+        if (!win) return;
+
+        highestZ++;
+        win.style.zIndex = highestZ;
+
+        win.classList.add("active");
+
+        updateTaskbar();
+    }
+
+
+    /* =========================
+       TASKBAR
+       ========================= */
+
+    function updateTaskbar() {
+
+        const taskbar = document.getElementById("taskbar-windows");
+
+        taskbar.innerHTML = "";
+
+        openWindows.forEach(id => {
+
+            const win = document.getElementById(id);
+
+            const button = document.createElement("button");
+
+            button.className = "task-button";
+
+            if (win.classList.contains("active")) {
+                button.classList.add("active-task");
+            }
+
+            button.textContent = "▣ " + windowNames[id];
+
+            button.onclick = function() {
+
+                if (win.classList.contains("active")) {
+                    minimizeWindow(id);
+                } else {
+                    focusWindow(id);
+                }
+
+            };
+
+            taskbar.appendChild(button);
+
+        });
+
+    }
+
+
+    /* =========================
+       START MENU
+       ========================= */
+
+    function toggleStart() {
+
+        document
+            .getElementById("start-menu")
+            .classList.toggle("open");
+
+    }
+
+
+    document.addEventListener("mousedown", function(event) {
+
+        const menu = document.getElementById("start-menu");
+        const button = document.getElementById("start-button");
+
+        if (
+            menu.classList.contains("open") &&
+            !menu.contains(event.target) &&
+            !button.contains(event.target)
+        ) {
+            menu.classList.remove("open");
+        }
+
+    });
+
+
+    /* =========================
+       DRAG WINDOWS
+       ========================= */
+
+    document.querySelectorAll(".xp-window").forEach(win => {
+
+        const titleBar = win.querySelector(".title-bar");
+
+        let dragging = false;
+        let offsetX = 0;
+        let offsetY = 0;
+
+        titleBar.addEventListener("mousedown", function(event) {
+
+            if (event.target.closest(".window-button")) {
+                return;
+            }
+
+            dragging = true;
+
+            focusWindow(win.id);
+
+            const rect = win.getBoundingClientRect();
+
+            offsetX = event.clientX - rect.left;
+            offsetY = event.clientY - rect.top;
+
+            event.preventDefault();
+
+        });
+
+
+        document.addEventListener("mousemove", function(event) {
+
+            if (!dragging) return;
+
+            let x = event.clientX - offsetX;
+            let y = event.clientY - offsetY;
+
+            const maxX = window.innerWidth - 100;
+            const maxY = window.innerHeight - 80;
+
+            x = Math.max(-win.offsetWidth + 100, Math.min(x, maxX));
+            y = Math.max(0, Math.min(y, maxY));
+
+            win.style.left = x + "px";
+            win.style.top = y + "px";
+
+        });
+
+
+        document.addEventListener("mouseup", function() {
+
+            dragging = false;
+
+        });
+
+    });
+
+
+    /* =========================
+       CLOCK
+       ========================= */
+
+    function updateClock() {
+
+        const now = new Date();
+
+        let hours = now.getHours();
+        const minutes = String(now.getMinutes()).padStart(2, "0");
+
+        const ampm = hours >= 12 ? "PM" : "AM";
+
+        hours = hours % 12;
+
+        if (hours === 0) {
+            hours = 12;
+        }
+
+        document.getElementById("clock").textContent =
+            hours + ":" + minutes + " " + ampm;
+
+    }
+
+    updateClock();
+
+    setInterval(updateClock, 1000);
+
+
+    /* =========================
+       DOUBLE-CLICK DESKTOP
+       ========================= */
+
+    document.querySelectorAll(".desktop-icon").forEach(icon => {
+
+        icon.addEventListener("dblclick", function() {
+
+            const label = icon
+                .querySelector(".icon-label")
+                .textContent
+                .toLowerCase();
+
+            if (label.includes("computer")) {
+                openWindow("welcome");
+            }
+
+            else if (label.includes("internet")) {
+                openWindow("internet");
+            }
+
+            else if (label.includes("documents")) {
+                openWindow("documents");
+            }
+
+            else if (label.includes("links")) {
+                openWindow("links");
+            }
+
+            else if (label.includes("about")) {
+                openWindow("about");
+            }
+
+            else if (label.includes("recycle")) {
+                openWindow("recycle");
+            }
+
+        });
+
+    });
+
+
+    /* =========================
+       ESC = CLOSE START MENU
+       ========================= */
+
+    document.addEventListener("keydown", function(event) {
+
+        if (event.key === "Escape") {
+            document
+                .getElementById("start-menu")
+                .classList.remove("open");
+        }
+
+    });
+
+</script>
 
 </body>
 </html>
+```
