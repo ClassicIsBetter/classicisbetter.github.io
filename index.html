@@ -4,11 +4,67 @@
 <head>
     <meta charset="UTF-8">
     <title>Classics Page</title>
+
     <link rel="stylesheet" href="style.css">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
 </head>
+
 <body>
-test with new font
+
+    <div class="profile">
+
+        <img
+            class="avatar"
+            src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-316814348532A8F53085DFCD564A50DF-Png/150/150/AvatarHeadshot/Webp/noFilter"
+            width="50"
+        >
+
+        <div class="display-name">Classic_IsBetter</div>
+
+        <div class="username">@Minecraft_boy236</div>
+
+        <p class="stats">
+            <span id="friends">Loading...</span> friends,
+            <span id="following">Loading...</span> following,
+            <span id="followers">Loading...</span> followers
+        </p>
+
+    </div>
+
+
+    <script>
+        const userId = 4836772414;
+
+        async function updateStats() {
+            try {
+                const [friends, following, followers] = await Promise.all([
+                    fetch(`https://friends.roblox.com/v1/users/${userId}/friends/count`),
+                    fetch(`https://friends.roblox.com/v1/users/${userId}/followings/count`),
+                    fetch(`https://friends.roblox.com/v1/users/${userId}/followers/count`)
+                ]);
+
+                const friendsData = await friends.json();
+                const followingData = await following.json();
+                const followersData = await followers.json();
+
+                document.getElementById("friends").textContent = friendsData.count;
+                document.getElementById("following").textContent = followingData.count;
+                document.getElementById("followers").textContent = followersData.count;
+
+            } catch (error) {
+                console.error("Could not update Roblox stats:", error);
+            }
+        }
+
+        // Update immediately
+        updateStats();
+
+        // Update every 10 seconds
+        setInterval(updateStats, 10000);
+    </script>
+
 </body>
+</html>
