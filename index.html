@@ -36,34 +36,25 @@
 
 
     <script>
-        const userId = 4836772414;
+const STATS_API = "https://roblox-profile-stats.silly-search-api.workers.dev/";
 
-        async function updateStats() {
-            try {
-                const [friends, following, followers] = await Promise.all([
-                    fetch(`https://friends.roblox.com/v1/users/${userId}/friends/count`),
-                    fetch(`https://friends.roblox.com/v1/users/${userId}/followings/count`),
-                    fetch(`https://friends.roblox.com/v1/users/${userId}/followers/count`)
-                ]);
+async function updateStats() {
+    try {
+        const response = await fetch(STATS_API);
+        const data = await response.json();
 
-                const friendsData = await friends.json();
-                const followingData = await following.json();
-                const followersData = await followers.json();
+        document.getElementById("friends").textContent = data.friends;
+        document.getElementById("following").textContent = data.following;
+        document.getElementById("followers").textContent = data.followers;
 
-                document.getElementById("friends").textContent = friendsData.count;
-                document.getElementById("following").textContent = followingData.count;
-                document.getElementById("followers").textContent = followersData.count;
+    } catch (error) {
+        console.error("Could not update Roblox stats:", error);
+    }
+}
 
-            } catch (error) {
-                console.error("Could not update Roblox stats:", error);
-            }
-        }
+updateStats();
 
-        // Update immediately
-        updateStats();
-
-        // Update every 10 seconds
-        setInterval(updateStats, 10000);
+setInterval(updateStats, 10000);
     </script>
 
 </body>
