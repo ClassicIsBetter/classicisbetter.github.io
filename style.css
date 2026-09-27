@@ -1,5 +1,30 @@
 body {
     font-family: "Silkscreen", sans-serif;
     background-color: black;
-    color: white !important;
+    color: white;
+}
+
+.profile {
+    margin: 20px;
+}
+
+.avatar {
+    display: block;
+    margin-bottom: 8px;
+}
+
+.display-name {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.username {
+    font-size: 13px;
+    margin-top: 2px;
+    opacity: 0.7;
+}
+
+.stats {
+    font-size: 13px;
+    margin-top: 12px;
 }
