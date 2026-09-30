@@ -9,10 +9,12 @@
 </head>
 <body>
     <h1 class="title">Bubbolscript Documentation</h1>
-    <h1 class="sub-title">Repeat</h1>
+    <h1 class="sub-title">Loops</h1>
 
-    <h2>1. Repeat</h2>
+    
     <div class="topic-box">
+        <h2>1. Repeat</h2>
+        
         <p>Repeat lets scripts do certain actions multiple times before moving onto the next one</p>
         <p>You can make a script repeat an action multple times by using</p>
         <p class="explanation-text"> "repeat [amount of times]</p>
@@ -29,6 +31,31 @@
             <div class="code-output">
                 <h3>Output:</h3>
                 <p>hello!</p><p>hello!</p><p>hello!</p><p>hello!</p><p>hello!</p>
+            </div>
+        </div>
+    </div>
+
+    
+
+    <div class="topic-box2">
+        <h2>2. Forever</h2>
+        
+        <p>Forever lets scripts do something forever. Everything below a forever loop cannot be reached until the loop is stopped.</p>
+        <p>You can make a script loop an action forever by using</p>
+        <p class="explanation-text"> "forever</p>
+        <p class="explanation-text">[action you want the script to do, for example: print hi]</p>
+        <p class="explanation-text">end"</p>
+        <p>Here is an example of a script repeating an action forever</p>
+        <div class="code-example-bg">
+            
+            <div class="code-box">
+                <p>forever</p>
+                <p>print infinite loop!</p>
+                <p>end</p>
+            </div>
+            <div class="code-output">
+                <h3>Output:</h3>
+                <p>infinite loop!</p><p>infinite loop!</p><p>infinite loop!</p><p>infinite loop!</p><p>infinite loop!</p><p>(and so on...)</p>
             </div>
         </div>
     </div>
