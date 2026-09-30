@@ -98,3 +98,16 @@ body {
 #selected-sidebar{
     background-color: rgb(41, 41, 41);
 }
+
+.detailed-output{
+    display: flex;
+    gap: 8px;
+}
+
+.detailed-output-time{
+    color: grey;
+}
+
+.explanation-text{
+    line-height: 5px;
+}
