@@ -1,9 +1,13 @@
 document.addEventListener("DOMContentLoaded", () => {
     const sidebarHTML = `
     <aside class="sidebar">
+        <div>
+        <img href="bubbol!.webp">
         <h2>BubbolScript Documentation</h2>
+        </div>
         <nav>
             <a href="/bubbolscript-docs/basics">Basics</a>
+            <a href="/bubbolscript-docs/variables">Var, Add and Sub</a>
             <a href="/bubbolscript-docs/wait">Wait</a>
             <a href="/bubbolscript-docs/repeat">Loops</a>
             <a href="/bubbolscript-docs/ifelse">If/else</a>
