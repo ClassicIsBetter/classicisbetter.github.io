@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const sidebarHTML = `
         <aside class="sidebar">
             <div>
-<img src="bubbol!.webp">
+<img src="bubbolscript-docs/bubbol!.webp">
 <h2>BubbolScript Documentation</h2>
 </div>
             <nav>
