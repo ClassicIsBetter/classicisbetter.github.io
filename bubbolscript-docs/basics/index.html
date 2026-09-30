@@ -2,13 +2,26 @@
 <html lang="en">
 <head>
     <title>BubbolScript Documentation</title>
-    <link rel="stylesheet" href="/bubbolscript-docs/style.css">
+    <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://googleapis.com">
     <link rel="preconnect" href="https://gstatic.com" crossorigin>
     <link href="https://googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
-    <script src="/sidebar.js" defer></script>
 </head>
 <body>
+
+
+    <aside class="sidebar">
+        <h2>BubbolScript Documentation</h2>
+        <nav>
+            <a href="/bubbolscript-docs/basics" id="selected-sidebar">Basics</a>
+            <a href="/bubbolscript-docs/wait" >Wait</a>
+            <a href="/bubbolscript-docs/repeat" >Loops</a>
+            <a href="/bubbolscript-docs/ifelse" >If/else</a>
+        </nav>
+    </aside>
+
+    <main class="main-stuff">
+
     <h1 class="title">Bubbolscript Documentation</h1>
     <h1 class="sub-title">Print and Var</h1>
     <div class="topic-box">
@@ -19,7 +32,10 @@
         <div class="code-example-bg">
             
             <div class="code-box">
-                <p>print Hello World</p>
+                <div class="same-line">
+                <p class="print">print</p> 
+                <p>Hello World</p>
+                </div>
             </div>
             <div class="code-output">
                 <h3>Output:</h3>
@@ -37,8 +53,15 @@
         <div class="code-example-bg">
             
             <div class="code-box">
-                <p>var score 5</p>
-                <p>print score</p>
+                <div class="same-line">
+                    <p class="var">var</p>
+                    <p>score 5</p>
+                </div>
+                <div class="same-line">
+                    <p class="print">print</p>
+                    <p>score</p>
+                </div>
+                
             </div>
             <div class="code-output">
                 <h3>output:</h3>
@@ -46,5 +69,7 @@
             </div>
         </div>
     </div>
+
+    </main>
 </body>
 </html>
