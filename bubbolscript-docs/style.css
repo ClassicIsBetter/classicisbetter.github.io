@@ -3,7 +3,7 @@ body {
   font-size: 16px;
   line-height: 1;
   padding: 2px;
-  background-color: rgb(39, 39, 38);
+  background-color: rgb(39, 39, 39);
   color: white;
 }
 
@@ -63,6 +63,7 @@ body {
     margin-top: 10px;
 }
 
+
 .sidebar {
     height: 100vh;     
     width: 250px;       
@@ -99,15 +100,56 @@ body {
     background-color: rgb(41, 41, 41);
 }
 
-.detailed-output{
+.print{
+    color: lightskyblue;
+}
+
+.var{
+    color: rgb(255, 91, 91);
+}
+
+.end{
+    color: red;
+}
+
+.forever{
+    color: magenta;
+}
+
+.getchild{
+    color: rgb(97, 160, 2);
+}
+
+.setval{
+    color: rgb(247, 189, 0);
+}
+
+.getval{
+    color: rgb(255, 157, 0);
+}
+
+.wait{
+    color: rgb(151, 73, 0);
+}
+
+.if{
+    color: rgb(178, 0, 178);
+}
+
+.else{
+    color: purple;
+}
+
+.repeat{
+    color: rgb(145, 0, 145);
+}
+
+.on_key_down{
+    color: rgb(255, 182, 117);
+}
+
+.same-line {
     display: flex;
+    align-items: center;
     gap: 8px;
-}
-
-.detailed-output-time{
-    color: grey;
-}
-
-.explanation-text{
-    line-height: 5px;
 }
