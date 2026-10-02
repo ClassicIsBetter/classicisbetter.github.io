@@ -17,7 +17,6 @@
         <p>Children are different instances in the workplace</p>
         <p>They are very important for making things such as doors, cars, or anything else</p>
         <p>To get a child in the workplace, use "getChild [instance name]"</p>
-        <p>To get a child in the workplace, use "getChild [instance name]"</p>
         <div class="code-example-bg">
             
             <div class="code-box">
@@ -29,10 +28,21 @@
     <div class="topic-box">
         <h2>2. Values/Properties</h2>
         <p>Values can be used to edit different properties about instances</p>
-        <p>You can edit a value by using "setval [value to change] [new value]"</p>
+        <p>You can edit a value by using "setval [value to change] [new value]" on the same line that you have used to get an instance using getChild</p>
         <p>Current values you can change are Position, Scale, Rotation and Text</p>
         <p>To change an instance's position, scale and rotation, you must put the new values in a Vector3()</p>
-        <p>Here is an example of a part's position being edited in a script:</p></p>
+        <p>Here is an example of a part's position being edited in a script:</p>
+        <div class="code-example-bg">
+            
+            <div class="code-box">
+                <p>getChild Part1 setval position Vector3(1.0, 5.0, 5.0)</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="topic-box">
+        <h2>2. Player Properties</h2>
+        <p>Current player properties are Speed, Jump Height and Gravity</p>
         <div class="code-example-bg">
             
             <div class="code-box">
