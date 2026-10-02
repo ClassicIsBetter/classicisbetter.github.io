@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <a href="/bubbolscript-docs/wait">Wait</a>
             <a href="/bubbolscript-docs/repeat">Loops</a>
             <a href="/bubbolscript-docs/ifelse">If/else</a>
+            <a href="/bubbolscript-docs/properties">Parents, Children and Properties</a>
         </nav>
     </aside>
     `;
