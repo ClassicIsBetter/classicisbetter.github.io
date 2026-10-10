@@ -1,17 +1,10 @@
-:root {
-  --bg: #ffffff;
-  --text: #111111;
-  --link: #2563eb;
-  --muted: #555555;
-}
-
 body {
-  font-family: "Silkscreen", "Courier New", monospace;
-  background: var(--bg);
-  color: var(--text);
+  font-family: 'Minecraftia';
+  background: black;
+  color: white;
   max-width: 640px;
   margin: 0 auto;
-  padding: 2rem 1rem 4rem;
+  padding: 25px;
   line-height: 1.5;
 }
 
@@ -22,27 +15,6 @@ p.opinion {
   line-height: 1.3;
 }
 
-h1.hidden-heading {
-  font-size: 1.75rem;
-  margin-bottom: 1rem;
-}
-
-.cat-figure {
-  margin: 1.5rem 0;
-  text-align: center;
-}
-
-.cat-figure img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
-}
-
-.section-title {
-  margin: 2rem 0 0.5rem;
-  font-size: 1rem;
-}
-
 .socials ul,
 .projects ul {
   list-style: none;
@@ -50,143 +22,12 @@ h1.hidden-heading {
   margin: 0;
 }
 
-.socials li,
-.projects li {
-  padding: 0.15rem 0;
-}
 
 a {
-  color: var(--link);
+  color: rgb(42, 127, 255);
   text-decoration: none;
 }
 
 a:hover {
   text-decoration: underline;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #111111;
-    --text: #f1f1f1;
-    --link: #7cb0ff;
-    --muted: #aaaaaa;
-  }
-}
-
-/* Preview tabs + panels */
-.preview-tabs {
-  display: flex;
-  margin: 2rem -1rem 0;
-  padding: 0 1rem;
-  gap: 2px;
-}
-
-.tab-btn {
-  flex: 1;
-  font-family: "Silkscreen", sans-serif;
-  font-size: 0.8rem;
-  padding: 0.6rem 0.5rem;
-  border: none;
-  cursor: pointer;
-  background: #1a1a1a;
-  color: #999;
-}
-
-.tab-btn.active {
-  background: #000;
-  color: #fff;
-}
-
-.preview-panels {
-  margin: 0 -1rem -4rem;
-}
-
-.preview-panel {
-  font-family: "Silkscreen", sans-serif;
-  padding: 1px 1rem 2rem;
-}
-
-.preview-panel .profile {
-  margin: 20px;
-  text-align: center;
-}
-
-.preview-panel .avatar {
-  display: block;
-  margin: 0 auto 8px;
-  border-radius: 8px;
-}
-
-.preview-panel .display-name {
-  font-size: 20px;
-  font-weight: 700;
-}
-
-.preview-panel .username {
-  display: inline-block;
-  font-size: 13px;
-  margin-top: 2px;
-  opacity: 0.7;
-  color: white;
-  text-decoration: none;
-}
-
-.preview-panel .username:hover {
-  text-decoration: underline;
-}
-
-.preview-panel .stats {
-  font-size: 13px;
-  margin-top: 12px;
-}
-
-.preview-panel .stats a {
-  color: #7cb0ff;
-}
-
-/* Roblox theme */
-.roblox-preview {
-  background-color: black;
-  color: white;
-}
-
-/* YouTube theme */
-.youtube-preview {
-  background-color: #0f0f0f;
-  color: white;
-}
-
-.youtube-preview .avatar {
-  border-radius: 50%;
-  background: #272727;
-}
-
-.youtube-preview .display-name {
-  font-size: 15px;
-}
-
-.youtube-preview .username {
-  color: #ff4d4d;
-}
-
-.yt-subtabs {
-  display: flex;
-  gap: 2px;
-  padding-top: 1px;
-}
-
-.yt-subtab {
-  flex: 1;
-  font-family: "Silkscreen", sans-serif;
-  font-size: 0.7rem;
-  padding: 0.5rem 0.4rem;
-  border: none;
-  cursor: pointer;
-  background: #1a1a1a;
-  color: #999;
-}
-
-.yt-subtab.active {
-  background: #ff0000;
-  color: #fff;
 }
